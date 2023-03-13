@@ -1,6 +1,8 @@
 ## Prototype
 Prototype is a creational design pattern that lets you copy existing objects without making your code dependent on their classes.
 
+_Also known as: Clone_
+
 ### Applicability
 - Use the Prototype pattern when your code shouldn’t depend on the concrete classes of objects that you need to copy.
 _This happens a lot when your code works with objects passed to you from 3rd-party code via some interface. The concrete classes of these objects are unknown, and you couldn’t depend on them even if you wanted to._

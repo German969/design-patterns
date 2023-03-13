@@ -1,6 +1,8 @@
 ## Composite
 Composite is a structural design pattern that lets you compose objects into tree structures and then work with these structures as if they were individual objects.
 
+_Also known as: Object Tree_
+
 ### Applicability
 - Use the Composite pattern when you have to implement a tree-like object structure.
 _The Composite pattern provides you with two basic element types that share a common interface: simple leaves and com- plex containers. A container can be composed of both leaves and other containers. This lets you construct a nested recursive object structure that resembles a tree._

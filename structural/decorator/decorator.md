@@ -1,6 +1,8 @@
 ## Decorator
 Decorator is a structural design pattern that lets you attach new behaviors to objects by placing these objects inside special wrapper objects that contain the behaviors.
 
+_Also known as: Wrapper_
+
 ### Applicability
 - Use the Decorator pattern when you need to be able to assign extra behaviors to objects at runtime without breaking the code that uses these objects.
 _The Decorator lets you structure your business logic into lay- ers, create a decorator for each layer and compose objects with various combinations of this logic at runtime. The client code can treat all these objects in the same way, since they all fol- low a common interface._
