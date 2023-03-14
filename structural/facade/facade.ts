@@ -1,38 +1,47 @@
-// The Facade provides convenient access to a particular part of the subsystem’s functionality.
-// It knows where to direct the client’s request and how to operate all the moving parts.
-class Facade {
-  subsystem1: SubsystemClass1;
-  subsystem2: SubsystemClass2;
-  subsystem3: SubsystemClass3;
+// These are some of the classes of a complex 3rd-party video conversion framework. We don't control that code, therefore
+// can't simplify it.
+class VideoFile {
+  constructor(filename) {}
+}
+class OggCompressionCodec {}
+class MPEG4CompressionCodec {}
+class CodecFactory {
+  extract(file) {}
+}
+class BitrateReader {
+  static read(filename, sourceCodec) {}
+  static convert(buffer, destinationCodec) {}
+}
+class Audiomixer {
+  fix(result) {}
+}
 
-  optionalAdditionalFacade;
+// We create a facade class to hide the framework's complexity behind a simple interface. It's a trade-off between
+// functionality and simplicity.
+class VideoConverter {
+  convert(filename, format) {
+    let file = new VideoFile(filename);
+    let sourceCodec = (new CodecFactory()).extract(file);
+    let destinationCodec;
+    if (format === "mp4") {
+      destinationCodec = new MPEG4CompressionCodec();
+    } else {
+      destinationCodec = new OggCompressionCodec();
+    }
+    let buffer = BitrateReader.read(filename, sourceCodec);
+    let result = BitrateReader.convert(buffer, destinationCodec);
+    result = (new Audiomixer()).fix(result);
 
-  subsystemOperation() {
-    this.subsystem1.method1();
-    this.subsystem2.method2();
-    this.subsystem3.method3();
+    return (new File(result as any, 'name')) as any;
   }
 }
 
-// An Additional Facade class can be created to prevent polluting a single facade with unrelated features that might make it yet another complex structure.
-class AdditionalFacade {
-  anotherOperation() {}
+// Application classes don't depend on a billion classes provided by the complex framework. Also, if you decide to
+// switch frameworks, you only need to rewrite the facade class.
+class Application {
+  main() {
+    let convertor = new VideoConverter();
+    let mp4 = convertor.convert("funny-cats-video.ogg", "mp4");
+    mp4.save();
+  }
 }
-
-// The Complex Subsystem consists of dozens of various objects.
-// To make them all do something meaningful, you have to dive deep into the subsystem’s implementation details, such as initializing objects
-// in the correct order and supplying them with data in the proper format.
-class SubsystemClass1 {
-  method1() {}
-}
-class SubsystemClass2 {
-  method2() {}
-}
-class SubsystemClass3 {
-  method3() {}
-}
-
-// Client
-// The Client uses the facade instead of calling the subsystem objects directly.
-const facade = new Facade();
-facade.subsystemOperation();
