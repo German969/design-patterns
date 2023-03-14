@@ -24,7 +24,7 @@ method.
    - Createreceivers.
    - Create commands, and associate them with receivers if needed.
    - Create senders, and associate them with specific commands.
-
+ 
 ### Pros
 * Single Responsibility Principle. You can decouple classes that
 invoke operations from classes that perform these operations.
