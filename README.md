@@ -17,6 +17,7 @@ Lets you copy existing objects without making your code dependent on their class
 ### Singleton
 Lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
+
 ## Structural
 
 ### Adapter
@@ -39,6 +40,7 @@ Lets you fit more objects into the available amount of RAM by sharing common par
 
 ### Proxy
 Lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.
+
 
 ## Behavioral
 
