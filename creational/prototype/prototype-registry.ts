@@ -20,7 +20,7 @@ class Button implements Prototype2 {
   }
 }
 
-// The Prototype Registry provides an easy way to access fre- quently-used prototypes.
+// The Prototype Registry provides an easy way to access frequently-used prototypes.
 // It stores a set of pre-built objects that are ready to be copied.
 class PrototypeRegistry {
   items: Prototype2[];
