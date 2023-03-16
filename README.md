@@ -35,7 +35,7 @@ Lets you attach new behaviors to objects by placing these objects inside special
 ### Facade
 Provides a simplified interface to a library, a framework, or any other complex set of classes.
 
-## Flyweight
+### Flyweight
 Lets you fit more objects into the available amount of RAM by sharing common parts of state between multiple objects instead of keeping all of the data in each object.
 
 ### Proxy
